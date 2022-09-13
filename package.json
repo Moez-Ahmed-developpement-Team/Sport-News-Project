@@ -7,7 +7,7 @@
     "start": "nodemon server/index.js"
   },
   "repository": {
-    "type": "git",
+    "type": "git"
   },
   "author": "Sassi Ahmed / Temimi Moez",
   "license": "ISC",
@@ -18,9 +18,10 @@
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.2.5",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react-dom": "^17.0.2", 
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.15.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
