@@ -15,22 +15,31 @@ const sequelize = new Sequelize(config.database, config.user, config.password,
 
 
   db.User = require("./users.model")(sequelize, DataTypes);
-  db.User = require("./admins.model")(sequelize, DataTypes);
+  db.Admin = require("./admins.model")(sequelize, DataTypes);
   db.Post = require("./posts.model")(sequelize, DataTypes);
   db.Comment = require("./comments.model")(sequelize, DataTypes);
 
-  db.User.hasMany(db.Post, {
-  foreignKey: "posterId",
-});
+  
 db.User.hasMany(db.Comment, {
     foreignKey: "commenterId",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
+  });
+  db.Comment.belongsTo(db.User, {
+    as: "commenter",
+    foreignKey: "commenterId",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
   });
   db.Post.hasMany(db.Comment, {
     foreignKey: "postId",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
   });
   db.Comment.belongsTo(db.Post, {
     foreignKey: "postId",
     onDelete: "CASCADE",
+    onUpdate: "CASCADE"
   });
 
 
