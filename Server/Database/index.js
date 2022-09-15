@@ -14,10 +14,10 @@ const sequelize = new Sequelize(config.database, config.user, config.password,
   db.sequelize = sequelize;
 
 
-  db.User = require("./users.model")(sequelize, DataTypes);
-  db.Admin = require("./admins.model")(sequelize, DataTypes);
-  db.Post = require("./posts.model")(sequelize, DataTypes);
-  db.Comment = require("./comments.model")(sequelize, DataTypes);
+  db.User = require("./models/users.model")(sequelize, DataTypes);
+  db.Admin = require("./models/admins.model")(sequelize, DataTypes);
+  db.Post = require("./models/posts.model")(sequelize, DataTypes);
+  db.Comment = require("./models/comments.model")(sequelize, DataTypes);
 
   
 db.User.hasMany(db.Comment, {
