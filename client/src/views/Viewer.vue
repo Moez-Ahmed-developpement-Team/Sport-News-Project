@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="Viewer">
     <Allposts msg="Welcome to Your Vue.js App" />
   </div>
 </template>
