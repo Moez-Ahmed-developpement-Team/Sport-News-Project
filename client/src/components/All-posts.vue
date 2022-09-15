@@ -2,6 +2,7 @@
 
   <div id="News" class="AllNews">
     <h1> All the News </h1>
+    <button @click="getAll()"></button>
     <div id="post" v-for=" (post,index) in Allposts" :key="index">
     <li>{{post.name}}</li>
     <br/>
@@ -33,7 +34,7 @@ export default {
 
   methods: {
     getAll() {
-      axios.get('http://localhost:3069/').then((result) => {result}).catch((err) => console.log(err))
+      axios.get('http://localhost:3069/getAll').then((result) => {console.log(result)}).catch((err) => console.log(err))
     }
   },
 }
