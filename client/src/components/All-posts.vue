@@ -1,9 +1,8 @@
 <template>
 
   <div id="News" class="AllNews">
-    <h1> All the News </h1>
-    <button @click="getAll()"></button>
-    <div id="container"></div>
+
+    <div id="container"></div>{{getAll()}}
     <ul id="post" v-for=" (post,index) in Allposts" :key="index">
     <li>{{post.text}}</li>
     <br/>
@@ -14,9 +13,13 @@
     </ul>
   </div>
 </template>
+
+
+
 <script>
 import axios from 'axios'
 export default {
+  name:'all-post',
   data() {
     return{
       Allposts:[],
@@ -32,7 +35,8 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
+
 <style scoped lang="scss">
 h3 {
   margin: 40px 0 0;
