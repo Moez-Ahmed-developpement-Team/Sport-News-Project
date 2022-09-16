@@ -9,14 +9,19 @@
 // @ is an alias to /src
 import Allposts from '@/components/All-posts.vue';
 import AddTest from '@/components/AddTest.vue';
+import { onMounted } from 'vue'
 
 export default {
-  name: 'All-posts',
+  name: 'Viewer-side',
   components: {
     Allposts,
     AddTest
 }
+
 }
+onMounted(() => {
+  return Allposts 
+})
 </script>
 
 
