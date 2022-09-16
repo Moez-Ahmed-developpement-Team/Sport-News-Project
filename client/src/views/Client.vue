@@ -1,6 +1,7 @@
 <template>
-  <div class="about">
+  <div class="client">
     <Allposts/>
+    <button></button>
   </div>
 </template>
 <script>
@@ -8,10 +9,9 @@
   import Allposts from '@/components/All-posts.vue';
   
   export default {
-    name: 'All-posts',
+    name: 'client-',
     components: {
-    Allposts,
-   
+    Allposts, 
 }
   }
   </script>

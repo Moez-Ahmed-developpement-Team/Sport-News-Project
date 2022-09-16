@@ -10,6 +10,7 @@
 
 <script>
 export default {
+    name:'one-post',
     props: {
 
     },
