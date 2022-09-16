@@ -1,24 +1,30 @@
+const adminRoutes = require ('./Routes/Admins.routes') ;
+const usersRoutes = require ('./Routes/Users.routes') ;
+const commentRoutes = require ('./Routes/Comments.Routes') ;
+const postsRoute = require('./Routes/Posts.routes'); 
 
 const express = require("express");
 
 const app = express();
 
-const PORT =  3069 ;
 ///
-const adminRoutes = require ('./Routes/AdminRoutes') ;
-const usersRoutes = require ('./Routes/UsersRoutes') ;
-const viewersRoutes = require ('./Routes/ViewersRoutes') ; 
 
-app.use("/admin",adminRoutes) ;
+//Add Routes to the middleware handling path, specifying the respective URL path
+app.use("/",adminRoutes) ;
 app.use("/user",usersRoutes) ;
-app.use("/view",viewersRoutes) ;
+app.use("/view",commentRoutes) ;
+app.use("/",postsRoute) ;
 
 
 
+const PORT =  3000 ;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+
+
+
 app.listen(PORT, function () {
-    console.log("Port 3069 is working");
+    console.log("Port 3000 is working");
   });
