@@ -2,28 +2,34 @@
 
   <div id="News" class="AllNews">
     <h1> All the News </h1>
-    <div class="box">{{Allposts}}</div>
-    <li>aaa</li>
-    <li>bbb</li>
-    <li>ccc</li>
+    <button @click="getAll()"></button>
+    <div id="container"></div>
+    <ul id="post" v-for=" (post,index) in Allposts" :key="index">
+    <li>{{post.text}}</li>
+    <br/>
+    <img id="pictureofNews" v-bind:src="post.content"/>
+    
+    <br/>
+    <li>{{post.id}}</li>
+    </ul>
   </div>
 </template>
-
 <script>
-  import axios from 'axios'
+import axios from 'axios'
 export default {
   data() {
-    return {
-      Allposts: ['ahmed Sassi']
+    return{
+      Allposts:[],
     }
+ 
   },
 
-methods: {
-  getAll(){axios.get('http://localhost:3069/').then((result)=>console.log(result)).catch((err)=>console.log(err))
+  methods: {
+    getAll() {
+      axios.get('http://localhost:3000/getAll').then((result) => {this.Allposts=result.data;console.log(this.Allposts)}).catch((err) => console.log(err))
     }
-},
+  },
 }
-// const getAll = axios.get('http://localhost:3069/').then((result)=>console.log(result)).catch((err)=>console.log(err))
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -33,16 +39,26 @@ h3 {
 }
 
 ul {
+  display: inline-block;
   list-style-type: none;
-  padding: 0;
+  padding: 1% 1% 1% 1%;
+  width:400px;
+  height: 250px;
 }
 
 li {
   display: inline-block;
-  margin: 0 10px;
 }
 
 a {
   color: #42b983;
+}
+
+#pictureofNews{
+  width: 300px;
+  height: 200px;
+}
+#container{
+  display :flex;
 }
 </style>
