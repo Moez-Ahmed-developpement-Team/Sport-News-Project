@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router() ;
 
 // Require controller modules.
 const { getAllPosts, addPost, deletePost,updatePost } = require('../Controllers/Posts.controllers');
@@ -11,8 +11,18 @@ router.get('/getAll', getAllPosts);
 // DELETE request for one post.
 router.delete('/:id', deletePost);
 // POST request for creating a new post.
-router.post('/add', addPost);
+router.post('/addPost', addPost);
 // UPDATE request for one post.
-router.put('/update', updatePost);
+router.put('/updatePost', updatePost);
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
