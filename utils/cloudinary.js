@@ -1,10 +1,9 @@
-const cloudinary = require('cloudinary').v2
+const cloudinary = require('cloudinary')
 
 cloudinary.config({
     cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret:process.env.CLOUDINARY_API_SECRET,
-    secure: true
+    api_secret:process.env.CLOUDINARY_API_SECRET
 })
 uploadToCloudinary = (path, folder) => {
     return cloudinary.v2.uploader.upload(path, {
@@ -16,10 +15,4 @@ uploadToCloudinary = (path, folder) => {
     })
 }
 
-removeFromCloudinary = async (public_id) => {
-    await cloudinary.v2.uploader.destroy(public_id, function (error, result) {
-        console.log(result, error)
-    })
-}
 
-module.exports = { uploadToCloudinary, removeFromCloudinary }

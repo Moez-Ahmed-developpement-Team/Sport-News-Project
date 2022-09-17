@@ -1,23 +1,26 @@
-
+/ admin routes////////////////////////////////////////////////////////////////
 const express = require("express") ;
-const router = express.Router ;
+const router = express.Router() ;
 
 
 
 // Require controller modules.
-const {getAllAdmin ,addAdmin, deleteAdmin,updateAdmin} = require('../Controllers/AdminControllers')
+const {getAllAdmin ,addAdmin, deleteAdmin,updateAdmin} = require('../Controllers/Admin.controllers')
 
 
 /// POSTS ROUTES ///
 
 //GET request to fetch all admin.
-router.get('/all',getAllAdmin ) ;
+router.get('/allAdmin',getAllAdmin ) ;
 // POST request for creating a new post.
-router.post('/add',addAdmin) ;
+router.post('/addAdmin',addAdmin) ;
 //DELETE request to delete 
-router.delete('/delete/:id',deleteAdmin) ;
+router.delete('/delete/:idDeleted',deleteAdmin) ;
 //UPDATE request to update 
-router.put('/update/:id',updateAdmin) ;
+router.put('/update/:idUpdate',updateAdmin) ;
+
+
+
 
 
 

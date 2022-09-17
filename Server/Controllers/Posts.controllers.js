@@ -1,9 +1,9 @@
 //Controller related to posts ressource.
 const  db  = require("../Database/index");
+
 module.exports = {
   //method to fetch all posts from the blog database.
   getAllPosts: async (req, res) => {
-    console.log(db)
     try {
       const posts = await db.Post.findAll({
         order: [["createdAt", "DESC"]],
