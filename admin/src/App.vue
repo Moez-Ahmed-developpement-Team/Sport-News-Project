@@ -8,13 +8,19 @@
       <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
       <ul>
       <li>
-        <router-link to="allPosts">Home </router-link>
+        <router-link  to="allPosts">Home </router-link>
         </li>
       <li>
         <router-link to="AddPost">Add Post </router-link>
         </li>
       <li>
-        <router-link to="log">Add Admin </router-link>
+        <router-link to="AddAdmin">Add Admin </router-link>
+        </li>
+      <li>
+        <router-link to="AllAdmins">Admins </router-link>
+        </li>
+      <li>
+        <router-link  to="logOut">Log Out </router-link>
         </li>
 
         <li>
@@ -33,7 +39,6 @@
 
 
 <script setup>
-// import AddPost from '@/components/AddPost.vue';
 
 
 </script>
