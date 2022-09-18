@@ -10,15 +10,15 @@
       <li>
         <router-link to="allPosts">Home </router-link>
         </li>
-      <li>
-        <router-link to="AddPost">Add Post </router-link>
-        </li>
-      <li>
-        <router-link to="log">Add Admin </router-link>
-        </li>
-      <li>
-        <router-link to="allPosts">Users </router-link>
-        </li>
+<li>
+  <form class="sign-in" action="#">
+        <h2>Sign In</h2>
+        <div>Use your account</div>
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign In</button>
+      </form>
+</li>
         <li>
           <a href="#!">Contact</a>
         </li>
@@ -35,13 +35,9 @@
 
 
 <script setup>
-import { onMounted } from 'vue'
-import Allposts from '@/components/All-posts.vue';
 // import AddPost from '@/components/AddPost.vue';
 
-onMounted(() => {
-   return Allposts
-})
+
 </script>
 
 <style lang="scss">
@@ -232,9 +228,7 @@ nav {
     margin-top: 20px;
     
   }
-  .sidenav{
-    
-  }
+
   .brand{
     display: flex;
     height: 130px;

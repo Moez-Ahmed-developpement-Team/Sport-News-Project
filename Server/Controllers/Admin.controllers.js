@@ -16,8 +16,13 @@ module.exports={
     },
    //method to add a post to the database via the respective model function.
     addAdmin:async(req,res)=>{
+        let newAdmin = {
+           adminName: req.body.adminName,
+           email: req.body.email,
+           password: req.body.password,
+        }
         try {
-            const admin =await db.Admin.create(req.body);
+            const admin =await db.Admin.create(newAdmin);
             res.status(203).send(admin) ;
         }catch (error){console.log (error)}res.status(555).send('you have error')
     },
@@ -25,7 +30,7 @@ module.exports={
     deleteAdmin:async(req,res)=>{
         let id =req.params.id 
         try {
-            const adminDeleted=await db.Admin.destroy({weher :{id :id}})
+            const adminDeleted=await db.Admin.destroy({where :{id :id}})
             res.status(207).json(adminDeleted) ;
         }catch (error){console.log(error)}res.status(564).send('you have error')
     },

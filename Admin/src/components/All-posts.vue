@@ -5,9 +5,9 @@
     <div id="container-post"></div> 
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
       <button @click.prevent = "getOne(post.id)">
-    <li>{{post.title}}</li>
+    <li>{{post.text}}</li>
     <br/>
-    <img id="pictureofNews" v-bind:src="post.image"/>
+    <img id="pictureofNews" v-bind:src="post.content"/>
       </button>
     </form>
   </div>
@@ -45,6 +45,7 @@ export default {
 
 
 <style scoped lang="scss">
+  
   #News{
     justify-items: center;
   }

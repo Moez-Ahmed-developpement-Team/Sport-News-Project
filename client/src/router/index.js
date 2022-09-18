@@ -5,7 +5,6 @@ import SignIn from '../components/SignIn.vue'
 import Viewer from '../views/Viewer.vue'
 import Allposts from '@/components/All-posts.vue';
 import AddPost from '@/components/AddPost.vue'  
-
 const routes = [
   {
     path: '/',
