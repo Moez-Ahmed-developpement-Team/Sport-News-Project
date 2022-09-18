@@ -6,7 +6,7 @@ const postsRoute = require('./Routes/Posts.routes');
 const express = require("express");
 const cors = require ('cors')
 const app = express();
-
+app.use = 
 ///
 
 //Add Routes to the middleware handling path, specifying the respective URL path

@@ -2,14 +2,11 @@
 
   <div id="News" class="AllNews">
 
-    <div id="container"></div>{{getAll()}}
-    <ul id="post" v-for=" (post,index) in Allposts" :key="index">
+    <div id="container-post" ></div>{{getAll()}}
+    <ul id="post" v-on:submit.prevent="getOne" v-for=" (post,index) in Allposts" :key="index">
     <li>{{post.text}}</li>
     <br/>
     <img id="pictureofNews" v-bind:src="post.content"/>
-    
-    <br/>
-    <li>{{post.id}}</li>
     </ul>
   </div>
 </template>
@@ -19,7 +16,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name:'all-post',
+  name:'all-posts',
   data() {
     return{
       Allposts:[],
@@ -32,37 +29,59 @@ export default {
       axios.get('http://localhost:3000/getAll').then((result) => {this.Allposts=result.data;console.log(this.Allposts)}).catch((err) => console.log(err))
     }
   },
+  getOne(){
+    axios.get("http://localhost:3000/getOnePost", post.id).then((result) =>{console.log(result);}
+  }
 }
 </script>
 
 
 
 <style scoped lang="scss">
+  #News{
+    justify-items: center;
+  }
+  #post{
+    display: flex;
+    flex-direction: column;
+    
+  }
 h3 {
   margin: 40px 0 0;
 }
 
-ul {
-  display: inline-block;
-  list-style-type: none;
+#post {
+ 
+align-items: center;
   padding: 1% 1% 1% 1%;
-  width:400px;
-  height: 250px;
+  border: 3px;
+  border-color: aliceblue;
+  border-style:hidden;
+  color: rgb(254, 255, 255);
+  font-size: 20px;
+margin-right: 30%;
+margin-left: 30%;
+cursor: pointer;
+}
+#post{
+  box-shadow: gray;
 }
 
 li {
   display: inline-block;
+
 }
 
 a {
-  color: #42b983;
+  color: #ffffff;
 }
 
 #pictureofNews{
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 400px;
 }
-#container{
+#container-post{
   display :flex;
 }
+
 </style>
