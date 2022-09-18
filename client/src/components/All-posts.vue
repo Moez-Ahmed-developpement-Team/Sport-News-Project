@@ -4,7 +4,7 @@
 
     <div id="container-post"></div> 
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
-      <button @click.prevent = "getOne(post.id)">
+      <button class="selectOne" @click = "getOne(post.id)">
     <li>{{post.text}}</li>
     <br/>
     <img id="pictureofNews" v-bind:src="post.content"/>
@@ -85,11 +85,19 @@ a {
 }
 
 #pictureofNews{
-  width: 500px;
+  width: 700px;
   height: 400px;
 }
 #container-post{
   display :flex;
 }
+.selectOne{
+  background: none;
+  border:none;
+}
+.AllNews{
+  background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/95097826056641.5634eedc62c87.png');
+}
+
 
 </style>
