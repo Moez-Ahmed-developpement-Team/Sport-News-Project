@@ -45,6 +45,7 @@ export default {
 
 
 <style scoped lang="scss">
+  
   #News{
     justify-items: center;
   }
