@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-  // @ is an alias to /src
+
   import Allposts from '@/components/All-posts.vue';
   
   export default {
