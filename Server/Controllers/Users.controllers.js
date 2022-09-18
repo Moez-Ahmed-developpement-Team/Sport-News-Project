@@ -2,6 +2,7 @@
 const db = require("../Database/index");
 const {hashed} = require("../Token&Auth/Auth.js")
 const {NewToken}=require("../Token&Auth/Token.js")
+const bcrypt=require('bcrypt')
 
 //adding client 
 module.exports = {
@@ -15,7 +16,6 @@ module.exports = {
     try {
       console.log("req--->", NewUser)
       const userinfo = await db.User.create(NewUser);
-      res.cookie('token',NewToken(req.body))
       res.send(userinfo)
       console.log(userinfo)
     }
@@ -35,15 +35,17 @@ module.exports = {
         }
       }
       );
-      if (userAuth === null) {
-        res.send({ message: 'user Not found' });
+      const Match = bcrypt.compareSync(password, user.password);
+      if (!Match) {
+        res.send({ message: 'check the password' });
       } else {
         res.cookie('token',NewToken(req.body))
         res.send({ message: 'welcome Back' })
       }
     }
-    catch {
-      res.send({ message: 'error' })
+    catch(err) {
+console.log(err)
+      res.send('user not found' )
     }
   },
 };

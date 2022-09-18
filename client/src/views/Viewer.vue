@@ -8,7 +8,6 @@
 <script>
 // @ is an alias to /src
 import Allposts from '@/components/All-posts.vue';
-import { onMounted } from 'vue'
 
 export default {
   name: 'Viewer-side',
@@ -17,9 +16,7 @@ export default {
   }
 
 }
-onMounted(() => {
-  return Allposts
-})
+
 </script>
 
 
