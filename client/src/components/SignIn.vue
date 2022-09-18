@@ -23,3 +23,16 @@
   </article>
 </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+  export default {
+    name:'signIn',
+    methods:{
+      newadmin(){
+        axios.post('http://localhost:3000/')
+      }
+    }
+}
+</script>

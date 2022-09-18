@@ -14,6 +14,9 @@
         <router-link to="AddPost">Add Post </router-link>
         </li>
       <li>
+        <router-link to="log">Add Admin </router-link>
+        </li>
+      <li>
         <router-link to="allPosts">Users </router-link>
         </li>
         <li>

@@ -19,12 +19,12 @@ module.exports = {
   },
   //method to get one post by id.
   getOnePost: async (req, res) => {
-    console.log(req.params.idpost);
+    console.log(req.params.id);
     try {
-      const post = await db.Post.findByPk(req.params.idpost, {
-        include: [
-          { model: db.User, as: "commenter", attributes: ["username"] },
-        ],
+      const post = await db.Post.findByPk(req.params.id, {
+        // include: [
+        //   { model: db.User, as: "commenter", attributes: ["username"] },
+        // ],
       });
       res.status(200).json(post);
     } catch (error) {
