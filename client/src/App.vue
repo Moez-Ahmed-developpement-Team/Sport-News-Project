@@ -2,7 +2,7 @@
 <section class="navigation">
   <div class="nav-container">
     <div >
-      <img class="brand" src="./assets/logo1.png" />
+      <img class="brand" src="./assets/Logo1.png" />
     </div>
     <nav>
       <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
@@ -32,13 +32,9 @@
 
 
 <script setup>
-import { onMounted } from 'vue'
-import Allposts from '@/components/All-posts.vue';
 // import AddPost from '@/components/AddPost.vue';
 
-onMounted(() => {
-   return Allposts
-})
+
 </script>
 
 <style lang="scss">
@@ -229,9 +225,7 @@ nav {
     margin-top: 20px;
     
   }
-  .sidenav{
-    
-  }
+
   .brand{
     display: flex;
     height: 130px;
