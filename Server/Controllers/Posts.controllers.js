@@ -9,12 +9,29 @@ module.exports = {
         order: [["createdAt", "DESC"]],
       });
       res.status(200).json(posts);
+      return;
     } catch (error) {
       console.log(error);
       res.status(500).send("Failed to load resource");
+      return;
+    
     }
   },
-  //method to get one post by picture's link.
+  //method to get one post by id.
+  getOnePost: async (req, res) => {
+    console.log(req.params.idpost);
+    try {
+      const post = await db.Post.findByPk(req.params.idpost, {
+        include: [
+          { model: db.User, as: "commenter", attributes: ["username"] },
+        ],
+      });
+      res.status(200).json(post);
+    } catch (error) {
+      res.status(500).send("Failed to load resource");
+    }
+  },
+  //method to get delete post by id.
   deletePost: async (req, res) => {
     let id = req.params.id
     try {
