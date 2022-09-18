@@ -2,9 +2,9 @@
 
   <div id="News" class="AllNews">
 
-    <div id="container-post"></div>{{getAll()}}
+    <div id="container-post"></div> 
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
-      <button @click.once = "say(post)">
+      <button @click.prevent = "getOne(post.id)">
     <li>{{post.text}}</li>
     <br/>
     <img id="pictureofNews" v-bind:src="post.content"/>
@@ -17,7 +17,11 @@
 
 <script>
 import axios from 'axios'
+
 export default {
+  mounted() {
+    this.getAll()
+  },
   name:'all-posts',
   data() {
     return{
@@ -31,11 +35,10 @@ export default {
     getAll() {
       axios.get('http://localhost:3000/getAll').then((result) => {this.Allposts=result.data}).catch((err) => console.log(err))
     },
-    say(message) {
-    console.log(message)
+    getOne(id) {
+    axios.get(`http://localhost:3000/getOnePost/${id}`).then((result) => { this.Allposts=[result.data]; console.log(this.Allposts);}).catch((err) => console.log(err))
   }
-
-  },
+}
 }
 </script>
 
