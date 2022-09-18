@@ -2,12 +2,14 @@
 
   <div id="News" class="AllNews">
 
-    <div id="container-post" ></div>{{getAll()}}
-    <ul id="post" v-on:submit.prevent="getOne" v-for=" (post,index) in Allposts" :key="index">
+    <div id="container-post"></div>{{getAll()}}
+    <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
+      <button @click.once = "say(post)">
     <li>{{post.text}}</li>
     <br/>
     <img id="pictureofNews" v-bind:src="post.content"/>
-    </ul>
+      </button>
+    </form>
   </div>
 </template>
 
@@ -20,18 +22,20 @@ export default {
   data() {
     return{
       Allposts:[],
+      id : ""
     }
  
   },
 
   methods: {
     getAll() {
-      axios.get('http://localhost:3000/getAll').then((result) => {this.Allposts=result.data;console.log(this.Allposts)}).catch((err) => console.log(err))
-    }
-  },
-  getOne(){
-    axios.get("http://localhost:3000/getOnePost", post.id).then((result) =>{console.log(result);}
+      axios.get('http://localhost:3000/getAll').then((result) => {this.Allposts=result.data}).catch((err) => console.log(err))
+    },
+    say(message) {
+    console.log(message)
   }
+
+  },
 }
 </script>
 
@@ -63,8 +67,9 @@ margin-right: 30%;
 margin-left: 30%;
 cursor: pointer;
 }
-#post{
-  box-shadow: gray;
+#post:hover{
+  box-shadow: rgb(255, 255, 255);
+  border-style: solid;
 }
 
 li {

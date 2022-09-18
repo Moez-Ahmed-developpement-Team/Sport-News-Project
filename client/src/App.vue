@@ -2,13 +2,13 @@
 <section class="navigation">
   <div class="nav-container">
     <div >
-      <img class="brand" src="./assets/Logo1.png" />
+      <img class="brand" src="./assets/logo1.png" />
     </div>
     <nav>
       <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
       <ul>
       <li>
-        <router-link to="allPosts">All Posts </router-link>
+        <router-link to="allPosts">Home </router-link>
         </li>
       <li>
         <router-link to="AddPost">Add Post </router-link>
