@@ -1,47 +1,43 @@
-<template> 
-<section class="navigation">
-  <div class="nav-container">
-    <div >
-      <img class="brand" src="./assets/logo1.png" />
+
     </div>
-    <nav>
-      <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-      <ul>
-      <li>
-        <router-link to="allPosts">Home </router-link>
-        </li>
-<li>
-  <form class="sign-in" action="#">
-        <h2>Sign In</h2>
-        <div>Use your account</div>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button>Sign In</button>
-      </form>
-</li>
-        <li>
-          <a href="#!">Contact</a>
-        </li>
-      </ul>
-    </nav>
+  </section>
+  <div class="sidebar">
+    <img class="side-nav-Pic"
+      src="./assets/fifa-world-cup-2022-poster-template-design-a01aa1db754051369a125491efd0edf7_screen.jpg">
   </div>
-</section>
-<div class="sidebar">
-  <img class="side-nav-Pic" src="./assets/fifa-world-cup-2022-poster-template-design-a01aa1db754051369a125491efd0edf7_screen.jpg">
-</div>
   <router-view />
 </template>
 
 
 
-<script setup>
-// import AddPost from '@/components/AddPost.vue';
+<script >
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      message: 'aaaaa',
+      user: { username: '', password: '' },
+    }
+  },
+  methods: {
+    loginVerification() {
+      axios.post('http://localhost:3000/user/signin', this.user).then((result) => { this.message = result; console.log(result.data) }).catch((error) => {console.log(error) ;this.message = error })
+
+    },
+
+    alertF() {
+      alert(this.message)
+    }
+  }
+}
+
 
 
 </script>
 
 <style lang="scss">
-  $content-width: 1000px;
+$content-width: 1000px;
 $breakpoint: 799px;
 $nav-height: 70px;
 $nav-background: #262626;
@@ -62,6 +58,7 @@ $link-hover-color: #74201d;
   line-height: $nav-height;
   text-transform: uppercase;
   font-size: 1.4em;
+
   a,
   a:visited {
     color: $nav-font-color;
@@ -76,19 +73,23 @@ $link-hover-color: #74201d;
 }
 
 // Navigation 
-.brand{
+.brand {
   width: 100px;
   height: 100px;
 }
+
 nav {
   float: right;
+
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
+
     li {
       float: left;
       position: relative;
+
       a,
       a:visited {
         display: block;
@@ -97,17 +98,22 @@ nav {
         background: $nav-background;
         color: $nav-font-color;
         text-decoration: none;
+
         &:hover {
           background: $link-hover-color;
           color: $nav-font-color;
         }
+
         &:not(:only-child):after {
           padding-left: 4px;
           content: ' ▾';
         }
-      } // Dropdown list
+      }
+
+      // Dropdown list
       ul li {
         min-width: 190px;
+
         a {
           padding: 15px;
           line-height: 20px;
@@ -137,43 +143,54 @@ nav {
   height: $nav-height;
   width: $nav-height;
 }
+
 @media only screen and (max-width: 798px) {
+
   // Hamburger nav visible on mobile only
   .nav-mobile {
     display: block;
   }
+
   nav {
-   width: 100%;
+    width: 100%;
     padding: $nav-height 0 15px;
+
     ul {
       display: none;
+
       li {
         float: none;
+
         a {
           padding: 15px;
           line-height: 20px;
         }
+
         ul li a {
           padding-left: 30px;
         }
       }
     }
   }
+
   .nav-dropdown {
     position: static;
   }
 }
+
 @media screen and (min-width: $breakpoint) {
   .nav-list {
     display: block !important;
   }
 }
+
 #nav-toggle {
   position: absolute;
   left: 18px;
   top: 22px;
   cursor: pointer;
   padding: 10px 35px 16px 0px;
+
   span,
   span:before,
   span:after {
@@ -187,57 +204,66 @@ nav {
     content: '';
     transition: all 300ms ease-in-out;
   }
+
   span:before {
     top: -10px;
   }
+
   span:after {
     bottom: -10px;
   }
+
   &.active span {
     background-color: transparent;
+
     &:before,
     &:after {
       top: 0;
     }
+
     &:before {
       transform: rotate(45deg);
     }
+
     &:after {
       transform: rotate(-45deg);
     }
   }
 }
 
-  .all-posts{
-    
-    margin-right: 20px;
-    text-decoration: none;
-  }
- 
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    
-  }
-  $color: rgb(250, 250, 246);
-  .side-nav-Pic{
-    width: 200px;
-    height: 600px;
-    margin-top: 20px;
-    
-  }
+.all-posts {
 
-  .brand{
-    display: flex;
-    height: 130px;
-    width:250px;
- 
-    
-    margin-left: -300px;
-  }
-  .sidebar {
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+
+}
+
+$color: rgb(250, 250, 246);
+
+.side-nav-Pic {
+  width: 200px;
+  height: 600px;
+  margin-top: 20px;
+
+}
+
+.brand {
+  display: flex;
+  height: 130px;
+  width: 250px;
+
+
+  margin-left: -300px;
+}
+
+.sidebar {
   margin: 0;
   padding: 0;
   width: 200px;
@@ -249,12 +275,11 @@ nav {
 
 .sidebar img {
   width: 200px;
-    height: 700px;
-    margin-top: 20px;
+  height: 700px;
+  margin-top: 20px;
 }
- 
-.sidebar img.active {
-}
+
+.sidebar img.active {}
 
 .sidebar img:hover:not(.active) {
   background-color: #555;
@@ -273,8 +298,14 @@ div.content {
     height: auto;
     position: relative;
   }
-  .sidebar img {float: left;}
-  div.content {margin-left: 0;}
+
+  .sidebar img {
+    float: left;
+  }
+
+  div.content {
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -283,5 +314,10 @@ div.content {
     float: none;
   }
 
+}
+
+.sign-in {
+  display: flex;
+  margin-top: 25px;
 }
 </style>
