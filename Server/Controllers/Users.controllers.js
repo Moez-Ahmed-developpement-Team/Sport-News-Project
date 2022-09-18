@@ -1,52 +1,49 @@
 //Controller related to users ressource for login And signUp.
 const db = require("../Database/index");
+const {hashed} = require("../Token&Auth/Auth.js")
+const {NewToken}=require("../Token&Auth/Token.js")
 
 //adding client 
 module.exports = {
-  //adding a user with loggin
-  addClient: 
-  async (req, res) => {
-      try {
-         const user = await user.findByPk(req.body.username, { include: [{ model: User, as: "poster", attributes: ["username"] }], })
-
-          if(user){
-            console.log(user);
-            res.send({ Message: "error" })
-          } } 
-         catch (error) { res.status(500).send("Failed to load resource");
-        return } 
-
-    // if (err) {
-    //   res.send({ Message: "error" })
-    // }
-    // //checking the username
-    // else if (res.length > 0) {
-    //   (res.send({ Message: "User already exists" }))
-    // }
-    // //creatin a new user model
-    // else {
-    //   var userInfo = {
-    //     username: req.body.username,
-    //     password: hashPassword(req.body.password, 10),
-    //     email: req.body.email,
-    //   }
-    // }
+  //adding a user 
+  addClient: async (req, res) => {
+    let NewUser = {
+      username: req.body.username,
+      email: req.body.email,
+      password: hashed(req.body.password)
+    }
     try {
-      //create the new user
-      const post = await db.user.create(userInfo);
-      res.status(201).send(post);
-    } catch (error) {
-      res.status(409).send(error);
+      console.log("req--->", NewUser)
+      const userinfo = await db.User.create(NewUser);
+      res.cookie('token',NewToken(req.body))
+      res.send(userinfo)
+      console.log(userinfo)
+    }
+    catch (err) {
+      res.send(err)
     }
   },
 
   //verifying user identity
   userAuthentification: async (req, res) => {
     try {
-
+      const userAuth = await db.User.findOne({
+        where:
+        {
+          password: hashed(req.body.password),
+          username: req.body.username
+        }
+      }
+      );
+      if (userAuth === null) {
+        res.send({ message: 'user Not found' });
+      } else {
+        res.cookie('token',NewToken(req.body))
+        res.send({ message: 'welcome Back' })
+      }
     }
     catch {
-
+      res.send({ message: 'error' })
     }
   },
 };
