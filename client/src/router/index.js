@@ -1,13 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Viewer from '../views/Viewer.vue';
 import SignIn from '../components/SignIn.vue'
 
-=======
 import Viewer from '../views/Viewer.vue'
 import Allposts from '@/components/All-posts.vue';
 import AddPost from '@/components/AddPost.vue'  
-
 const routes = [
   {
     path: '/',
@@ -17,12 +14,10 @@ const routes = [
   {
 
     path: '/log',
-    name: 'S',
+    name: 'log',
     component: SignIn
   },
   {
-    path: '/client',
-    name: 'client',
 
     path: '/allPosts',
     name: 'allPosts',

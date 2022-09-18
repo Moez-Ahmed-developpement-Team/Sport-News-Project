@@ -15,7 +15,7 @@ router.post('/addPost', addPost);
 // UPDATE request for one post.
 router.put('/updatePost', updatePost);
 // get request for one post.
-router.get('/getOnePost', getOnePost);
+router.get('/getOnePost/:id', getOnePost);
 
 
 
