@@ -1,24 +1,30 @@
 <template>
-    <div id="test">
+    <div class="add-post">
         <form v-on:submit.prevent="upload">
-          <div class="form-group">
-            <label>Text</label>
-            <input
-            :value="text"
+          <div >
+            <label class="title">Title</label>
+              <input type="text" class ="form-title" >
+            <br>
+            <label class="title">Content</label>
+            <textarea class="form-group"
             @input="event => text = event.target.value">
+            </textarea>
           </div>
-          <div class="form-group">
-          <label>Theme</label>
-          <select type="select">
+          <div >
+          <label class="title">Theme</label> <br>
+          <select class="form-select" type="select">
             <option>Football</option>
             <option>Basketball</option>
             <option>Tennis</option>
           </select>
         </div>
         <div>
-            <input type="file" id="avatar" name="avatar" accept="image/*" v-on:change="handleFileChange($event)">
+          <hr/>
+            <input type="file" id="avatar" name="avatar" accept="image/*" v-on:change="handleFileChange($event)" > <br>
+            <hr/>
+            <img class="img-box" id="output" width="500" />
+          <hr/>
             <input type="submit" value="upload">
-            
         </div>
       </form>
     </div>
@@ -27,7 +33,7 @@
 <script>
     import axios from "axios";
     export default {
-      name: "CloudinaryUpload",
+      name: "AddPost",
       data() {
         return {
           results: null,
@@ -47,6 +53,8 @@
     console.log("handlefilechange", event.target.files);
     this.file = event.target.files[0];
     this.filesSelected = event.target.files.length;
+    var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0])
   },
   prepareFormData: function() {
     this.formData = new FormData();
@@ -84,3 +92,6 @@
   }
 }}
     </script>
+    <style>
+
+    </style>
