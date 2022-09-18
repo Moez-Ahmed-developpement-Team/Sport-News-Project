@@ -1,29 +1,9 @@
 const express = require("express") ;
 const router = express.Router() ;
 
+const  { addClient , userAuthentification }=require("../Controllers/Users.controllers")
 
-
-// Require controller modules.
-const {getAllUsers} = require ('../Controllers/Users.controllers')
-
-
-
-
-/// Users ROUTES ///
-
-
-//GET request to fetch all users ;
-router.get('/allUsers',getAllUsers) ; 
-
-
-
-
-
-
-
-
-
-
-
+router.post("/signup",addClient)
+router.post("/signin",userAuthentification)
 
 module.exports = router;
