@@ -1,26 +1,4 @@
-<template>
-  <section class="navigation">
-    <div class="nav-container">
-      <div>
-        <img class="brand" src="./assets/Logo1.png" />
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <router-link to="allPosts">Home </router-link>
-          </li>
-          <li>
-            <form class="sign-in" @submit.prevent="loginVerification ">
-              <input type="username" placeholder="username" v-model="user.username" />
-              <input type="password" placeholder="Password" v-model="user.password" />
-              <button @click='alertF'> Sign In </button>
-            </form>
-          </li>
-          <li>
-            <a href="#!">Contact</a>
-          </li>
-        </ul>
-      </nav>
+
     </div>
   </section>
   <div class="sidebar">
