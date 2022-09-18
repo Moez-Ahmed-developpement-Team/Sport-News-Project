@@ -6,7 +6,9 @@ const postsRoute = require('./Routes/Posts.routes');
 const express = require("express");
 const cors = require ('cors')
 const app = express();
-app.use(express.json())
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 //Add Routes to the middleware handling path, specifying the respective URL path
 app.use("/",adminRoutes) ;
@@ -24,8 +26,6 @@ app.use(
   })
 );
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 
 
 

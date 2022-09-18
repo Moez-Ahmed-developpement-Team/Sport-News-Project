@@ -9,13 +9,18 @@
 </template>
 
 <script>
+    import { onMounted } from 'vue'
+    import axios from 'axios'
+    onMounted(() => {
+        axios.get('http://localhost:3000/getOnePost', id).then((result) => {console.log(result)}).catch((err) => console.log(err))
+})
 export default {
     name:'one-post',
     props: {
 
     },
     methods: {
-
+       
     }
 }
 </script>
