@@ -5,11 +5,19 @@
     <div id="container-post"></div> 
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
       <button @click.prevent = "getOne(post.id)">
-    <li>{{post.text}}</li>
+        <button @click="deletePost(post.id)">X</button>
+    <li>{{post.title}}</li>
     <br/>
-    <img id="pictureofNews" v-bind:src="post.content"/>
-      </button>
+    <img id="pictureofNews" v-bind:src="post.image"/>
+    <button @click.prevent = "getComments(post.id)"> showComments</button>
+    <form id="comment"  v-for=" (comment,index)  in AllComments" :key="index" >
+      <ul>
+        <li>{{comment.text}}</li>
+        <button @click="deleteComment(comment.id)">X</button>
+      </ul>
     </form>
+  </button>
+  </form>
   </div>
 </template>
 
@@ -37,8 +45,17 @@ export default {
     },
     getOne(id) {
     axios.get(`http://localhost:3000/getOnePost/${id}`).then((result) => { this.Allposts=[result.data]; console.log(this.Allposts);}).catch((err) => console.log(err))
-  }
-}
+  },
+  getComments(id){
+    axios.get(`http://localhost:3000/comment/allComments/${id}`).then((result) => {this.AllComments=result.data}).catch((err) => console.log(err))
+  },
+  deleteComment(id){
+    axios.delete(`http://localhost:3000/comment/delete/${id}`).then((result) => {console.log(result)}).catch((err) => console.log(err))
+  },
+  deletePost(id){
+    axios.delete(`http://localhost:3000/${id}`).then((result) => { console.log(result)}).catch((err) => console.log(err))
+  },
+},
 }
 </script>
 

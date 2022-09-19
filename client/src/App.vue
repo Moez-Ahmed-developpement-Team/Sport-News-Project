@@ -2,7 +2,7 @@
   <section class="navigation">
     <div class="nav-container">
       <div>
-        <img class="brand" src="./assets/Logo1.png" />
+        <img class="brand" src="./assets/logo1.png" />
       </div>
       <nav>
         <ul>
@@ -24,8 +24,8 @@
     </div>
   </section>
   <div class="sidebar">
-    <img class="side-nav-Pic"
-      src="./assets/fifa-world-cup-2022-poster-template-design-a01aa1db754051369a125491efd0edf7_screen.jpg">
+    <!-- <img class="side-nav-Pic"
+      src="./assets/fifa-world-cup-2022-poster-template-design-a01aa1db754051369a125491efd0edf7_screen.jpg"> -->
   </div>
   <router-view />
 </template>

@@ -10,7 +10,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-const PORT =  3000 ;
 app.use(
   cors({
     origin: true,
@@ -20,11 +19,12 @@ app.use(
 //Add Routes to the middleware handling path, specifying the respective URL path
 app.use("/",adminRoutes) ;
 app.use("/user",usersRoutes) ;
-app.use("/view",commentRoutes) ;
+app.use("/comment",commentRoutes) ;
 app.use("/",postsRoute) ;
 
 
 
+const PORT =  3000 ;
 
 
 

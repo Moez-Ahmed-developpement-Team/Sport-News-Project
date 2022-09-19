@@ -6,10 +6,11 @@
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
       <ul>
         <li>{{post.title}}</li>
-        <li>{{check}}</li>
+        <br/>
       </ul>
     <br/>
-    <img id="pictureofNews" v-bind:src="post.image"/>
+    <img id="pictureofNews" v-bind:src="post.image"/> 
+    
     </form>
   </div>
 </template>
@@ -27,7 +28,7 @@ export default {
   data() {
     return{
       Allposts:[],
-      id : ""
+      AllComments:[]
     }
  
   },
@@ -38,7 +39,7 @@ export default {
     },
     getOne(id) {
     axios.get(`http://localhost:3000/getOnePost/${id}`).then((result) => { this.Allposts=[result.data]; console.log(this.Allposts);}).catch((err) => console.log(err))
-  }
+  },
 }
 }
 </script>
