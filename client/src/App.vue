@@ -1,4 +1,26 @@
-
+<template>
+  <section class="navigation">
+    <div class="nav-container">
+      <div>
+        <img class="brand" src="./assets/Logo1.png" />
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <router-link to="allPosts">Home </router-link>
+          </li>
+          <li v-if="check">
+            <form class="sign-in" @submit.prevent="loginVerification ">
+              <input type="username" placeholder="username" v-model="user.username" />
+              <input type="password" placeholder="Password" v-model="user.password" />
+              <button @click="alertF"> Sign In </button>
+            </form>
+          </li>
+          <li>
+            <a href="#!">Contact</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </section>
   <div class="sidebar">
@@ -16,18 +38,28 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      message: 'aaaaa',
+      message: '',
       user: { username: '', password: '' },
+      check: true
     }
   },
   methods: {
-    loginVerification() {
-      axios.post('http://localhost:3000/user/signin', this.user).then((result) => { this.message = result; console.log(result.data) }).catch((error) => {console.log(error) ;this.message = error })
+    async loginVerification() {
+      await axios.post('http://localhost:3000/user/signin', this.user, { withCredentials: true }).then((result) => {
+        this.message = result.data.message;
+        if(result.data.message==="welcome Back"){
+        this.checking()}
+      }).catch((error) => {
+        console.log(error); this.message = error
+      })
 
     },
 
     alertF() {
       alert(this.message)
+    },
+    checking() {
+      this.check = false;
     }
   }
 }
@@ -37,6 +69,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+
 $content-width: 1000px;
 $breakpoint: 799px;
 $nav-height: 70px;

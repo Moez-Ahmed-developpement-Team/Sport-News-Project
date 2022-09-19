@@ -16,13 +16,17 @@
           <li>
             <router-link to="log">Add Admin </router-link>
           </li>
+
           <li>
             <a href="#!">Contact</a>
           </li>
         </ul>
       </nav>
     </div>
-
+  </section>
+  <div class="sidebar">
+    <img class="side-nav-Pic"
+      src="./assets/fifa-world-cup-2022-poster-template-design-a01aa1db754051369a125491efd0edf7_screen.jpg">
   </div>
   <router-view />
 </template>
@@ -30,6 +34,7 @@
 
 
 <script setup>
+// import AddPost from '@/components/AddPost.vue';
 
 
 </script>

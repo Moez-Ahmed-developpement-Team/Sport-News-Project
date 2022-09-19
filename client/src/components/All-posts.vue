@@ -4,10 +4,12 @@
 
     <div id="container-post"></div> 
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
-
+      <ul>
+        <li>{{post.title}}</li>
+        <li>{{check}}</li>
+      </ul>
     <br/>
     <img id="pictureofNews" v-bind:src="post.image"/>
-      </button>
     </form>
   </div>
 </template>
@@ -44,8 +46,10 @@ export default {
 
 
 <style scoped lang="scss">
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
   #News{
     justify-items: center;
+    font-family: 'Orbitron', sans-serif;
   }
   #post{
     display: flex;
