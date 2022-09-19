@@ -17,20 +17,22 @@ module.exports = {
     
     }
   },
-  //method to get one post by id.
-  getOnePost: async (req, res) => {
-    console.log(req.params.id);
+  getPostsByCategories: async (req, res) => {
     try {
-      const post = await db.Post.findByPk(req.params.id, {
-        // include: [
-        //   { model: db.User, as: "commenter", attributes: ["username"] },
-        // ],
+      const posts = await db.Post.findAll({
+        where:{theme : req.params.theme},
+        order: [["createdAt", "DESC"]],
       });
-      res.status(200).json(post);
+      res.status(200).json(posts);
+      return;
     } catch (error) {
+      console.log(error);
       res.status(500).send("Failed to load resource");
+      return;
+    
     }
   },
+
   //method to get delete post by id.
   deletePost: async (req, res) => {
     let id = req.params.id
