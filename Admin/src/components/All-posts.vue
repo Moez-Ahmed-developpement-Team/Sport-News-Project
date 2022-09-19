@@ -16,6 +16,8 @@
         <button @click="deleteComment(comment.id)">X</button>
       </ul>
     </form>
+    <input type="text"  v-model="data.text"/>
+    <button @click.prevent = "addComment(post.id)">Comment</button>
   </button>
   </form>
   </div>
@@ -34,7 +36,10 @@ export default {
   data() {
     return{
       Allposts:[],
-      id : ""
+      data: {
+        text:"",
+        postId:""
+      }
     }
  
   },
@@ -48,6 +53,11 @@ export default {
   },
   getComments(id){
     axios.get(`http://localhost:3000/comment/allComments/${id}`).then((result) => {this.AllComments=result.data}).catch((err) => console.log(err))
+  },
+  addComment(id){
+this.data.postId = id
+console.log("data==>",this.data);
+    axios.post(`http://localhost:3000/comment/add`,this.data).then((result) => {this.AllComments=result.data}).catch((err) => console.log(err))
   },
   deleteComment(id){
     axios.delete(`http://localhost:3000/comment/delete/${id}`).then((result) => {console.log(result)}).catch((err) => console.log(err))

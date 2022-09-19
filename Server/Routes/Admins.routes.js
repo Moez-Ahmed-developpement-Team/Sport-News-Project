@@ -5,7 +5,7 @@ const router = express.Router() ;
 
 
 // Require controller modules.
-const {getAllAdmin ,addAdmin, deleteAdmin,updateAdmin} = require('../Controllers/Admin.controllers')
+const {getAllAdmin ,addAdmin, deleteAdmin} = require('../Controllers/Admin.controllers')
 
 
 /// POSTS ROUTES ///
@@ -16,8 +16,7 @@ router.get('/allAdmin',getAllAdmin ) ;
 router.post('/addAdmin',addAdmin) ;
 //DELETE request to delete 
 router.delete('/delete/:idDeleted',deleteAdmin) ;
-//UPDATE request to update 
-router.put('/update/:idUpdate',updateAdmin) ;
+
 
 
 

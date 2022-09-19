@@ -10,7 +10,7 @@
                     <input type="text" placeholder="Name" v-model="infos.adminName" />
                     <input type="email" placeholder="Email" v-model="infos.email" />
                     <input type="password" placeholder="Password" v-model="infos.password" />
-                    <button>Sign Up</button>
+                    <button @click.prevent = "newadmin()">Sign Up</button>
                 </form>
             </div>
         </article>
@@ -32,10 +32,7 @@ export default {
     methods: {
         newadmin() {
             console.log(this.infos)
-            axios.post('http://localhost:3000/', this.infos).then((result)=> console.log(result)).catch((err)=> console.log(err))
-        },
-        toshowresult(){
-            
+            axios.post('http://localhost:3000/addAdmin', this.infos).then((result)=> console.log(result)).catch((err)=> console.log(err))
         }
 
     }
