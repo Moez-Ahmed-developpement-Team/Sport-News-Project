@@ -6,19 +6,21 @@ const  db  = require("../Database/index");
 module.exports={
   //method to fetch all comment from the blog database.
     getAllComment: async (req,res)=>{
+        
        try {
         const comments = await db.Comment.findAll({
-            order: [["createdAt", "DESC"]],
+            where: {postId : req.params.id}
         })
-        res.status(222).json(comments) ;
-       }catch(error){console.log(error)}res.status(530).send('you have error'); 
+        res.status(222).json(comments) ;return;
+       }catch(error){console.log(error)}res.status(530).send('you have error'); return;
     },
  //method to add a comment to the database via the respective model function.
     addComment:async(req,res)=>{
+        console.log(req.body)
         try {
             const addComment =await db.Comment.create(req.body)
-            res.status(230).send(addComment) ;
-        }catch (error){console.log(error)}res.status(543).send('you have error')
+            res.status(230).send(addComment) ; return;
+        }catch (error){console.log(error)}res.status(543).send('you have error') ;return;
     },
  //method to get one admin by picture's link.
     deleteComment:async(req,res)=>{
