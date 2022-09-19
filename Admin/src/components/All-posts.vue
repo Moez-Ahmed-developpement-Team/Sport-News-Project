@@ -5,9 +5,9 @@
     <div id="container-post"></div> 
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
       <button @click.prevent = "getOne(post.id)">
-    <li>{{post.text}}</li>
+    <li>{{post.title}}</li>
     <br/>
-    <img id="pictureofNews" v-bind:src="post.content"/>
+    <img id="pictureofNews" v-bind:src="post.image"/>
       </button>
     </form>
   </div>

@@ -1,14 +1,17 @@
 <template>
     <div class="add-post">
-        <form v-on:submit.prevent="upload">
-          <div >
+        <form id="the-hole-page" v-on:submit.prevent="upload">
+          <div id="thefirstpart" >
             <label class="title">Title</label>
+            <br/>
               <input type="text" class ="form-title" >
-            <br>
+            <br/>
             <label class="title">Content</label>
+            <br/>
             <textarea class="form-group"
             @input="event => text = event.target.value">
             </textarea>
+            <br/>
           </div>
           <div >
           <label class="title">Theme</label> <br>
@@ -93,5 +96,16 @@
 }}
     </script>
     <style>
-
+      #the-hole-page{
+   margin: 5% 5% 5% 5%;
+        align-items: center;
+        justify-content: center;
+        color: antiquewhite;
+        width: 600px;
+        height: 800px;
+        margin-left: 400px;
+      }
+#thefirstpart{
+  align-items: center;
+}
     </style>

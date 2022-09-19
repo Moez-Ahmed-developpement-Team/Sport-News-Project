@@ -46,8 +46,8 @@ export default {
   methods: {
     async loginVerification() {
       await axios.post('http://localhost:3000/user/signin', this.user, { withCredentials: true }).then((result) => {
-        this.message = result.data.message;
         if(result.data.message==="welcome Back"){
+          this.message = result.data.message;
         this.checking()}
       }).catch((error) => {
         console.log(error); this.message = error
