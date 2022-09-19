@@ -11,7 +11,7 @@
 <script>
     import { onMounted } from 'vue'
     import axios from 'axios'
-    onMounted(() => {
+    onMounted((id) => {
         axios.get('http://localhost:3000/getOnePost', id).then((result) => {console.log(result)}).catch((err) => console.log(err))
 })
 export default {

@@ -1,6 +1,6 @@
 <template>
   <section class="navigation">
-    <div class="nav-container">
+    <div v-if="check" class="nav-container">
       <div>
         <img class="brand" src="./assets/Logo1.png" />
       </div>
@@ -14,7 +14,7 @@
             <router-link to="AddPost">Add Post </router-link>
           </li>
           <li>
-            <router-link to="log">Add Admin </router-link>
+            <router-link to="AddAdmin">Add Admin </router-link>
           </li>
 
           <li>
@@ -33,9 +33,14 @@
 
 
 
-<script setup>
-// import AddPost from '@/components/AddPost.vue';
-
+<script>
+export default {
+  data() {
+    return {
+      check: true
+    }
+  },
+}
 
 </script>
 
