@@ -5,7 +5,7 @@
       <div id="container-post"></div> 
       <form id="post"  v-for=" (admin,index)  in AllAdmins" :key="index" >
       <li>{{admin.adminName}}</li>
-      <button @click.prevent = "deleteAdmin(admin.id)"> Remove Admin</button>
+      <button @click = "deleteAdmin(admin.id)"> Remove Admin</button>
       <br/>
       </form>
     </div>
@@ -33,8 +33,9 @@
         },
         deleteAdmin(id){
           console.log(id);
-            axios.delete(`http://localhost:3000/delete/${id}`).then((result) => {this.getAll(), console.log(result);}).catch((err) => console.log(err))
-        }
+            axios.delete(`http://localhost:3000/delete/${id}`).then((result) => {this.getAllAdmins(), console.log(result);}).catch((err) => console.log(err))
+       
+          }
     }
     }
     </script>

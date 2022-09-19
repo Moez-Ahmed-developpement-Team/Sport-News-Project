@@ -6,7 +6,7 @@ const  db  = require("../Database/index");
 module.exports={
   //method to fetch all comment from the blog database.
     getAllComment: async (req,res)=>{
-        
+        console.log(req.params.id);
        try {
         const comments = await db.Comment.findAll({
             where: {postId : req.params.id}
