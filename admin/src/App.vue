@@ -14,7 +14,10 @@
             <router-link to="AddPost">Add Post </router-link>
           </li>
           <li>
-            <router-link to="log">Add Admin </router-link>
+            <router-link to="AddAdmin">Add Admin </router-link>
+          </li>
+          <li>
+            <router-link to="AllAdmins">All Admins </router-link>
           </li>
 
           <li>
@@ -24,10 +27,19 @@
       </nav>
     </div>
   </section>
-  <div class="sidebar">
-    <img class="side-nav-Pic"
-      src="./assets/fifa-world-cup-2022-poster-template-design-a01aa1db754051369a125491efd0edf7_screen.jpg">
-  </div>
+  <aside class="sidebar">
+    <nav class="nav">
+      <ul>
+        <li class="active"><a href="#">Categories</a></li> 
+        <br/>
+        <li><a href="#">Football</a></li>
+        <br/>
+        <li><a href="#">BasketBall</a></li>
+        <br/>
+        <li><a href="#">Tennis</a></li>
+      </ul>
+    </nav>
+  </aside>
   <router-view />
 </template>
 
@@ -250,72 +262,63 @@ nav {
 
 $color: rgb(250, 250, 246);
 
-.side-nav-Pic {
-  width: 200px;
-  height: 600px;
-  margin-top: 20px;
-
-}
-
-.brand {
-  display: flex;
-  height: 130px;
-  width: 250px;
-
-
-  margin-left: -300px;
-}
-
 .sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
   position: fixed;
-  height: 100%;
-  overflow: auto;
-  margin-right: -83%;
+  width: 25%;
+  height: 100vh;
+  background: #312450;
+  font-size: 0.65em;
 }
 
-.sidebar img {
-  width: 200px;
-  height: 700px;
-  margin-top: 20px;
+.nav {
+  position: relative;
+  margin: 0 15%;
+  text-align: right;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
 }
 
-.sidebar img.active {}
-
-.sidebar img:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
-
-div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
-}
-
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
+.nav ul {
+  list-style: none;
+  
+  li {
     position: relative;
-  }
-
-  .sidebar img {
-    float: left;
-  }
-
-  div.content {
-    margin-left: 0;
+    margin: 3.2em 0;
+    
+    a {
+      line-height: 5em;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.4em;
+      color: rgba(#FFF, 0.35);
+      display: block;
+      transition: all ease-out 300ms;
+    }
+    
+    &.active a {
+      color: white;
+    }
+    
+    &:not(.active)::after {
+      opacity: 0.2;
+    }
+    
+    &:not(.active):hover a {
+      color: rgba(#FFF, 0.75);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 0.2em;
+      background: black;
+      left: 0;
+      bottom: 0;
+      background-image: linear-gradient(to right, #5e42a6, #b74e91)
+    }
   }
 }
 
-@media screen and (max-width: 400px) {
-  .sidebar img {
-    text-align: center;
-    float: none;
-  }
-
-}
 </style>

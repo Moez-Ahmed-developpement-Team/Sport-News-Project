@@ -24,7 +24,8 @@ module.exports={
     },
  //method to get one admin by picture's link.
     deleteComment:async(req,res)=>{
-        let  id =req.prames.id
+        let  id =req.params.id
+        console.log(req.params);
         try {
             const deleteComment =await db.Comment.destroy({where:{id:id}})
             res.status(232).send(deleteComment) ;
@@ -32,7 +33,6 @@ module.exports={
     },
 
     updateComment:async(req,res)=>{
-     let id =req.prames.id
      let update =req.body 
      try {
         const updateComment =await db.Comment.update(update,{where:{id:id}})
