@@ -26,21 +26,6 @@
         }
      
       },
-    
-      methods: {
-        getAllAdmins() {
-          axios.get('http://localhost:3000/allAdmin').then((result) => {this.AllAdmins=result.data}, console.log(this.AllAdmins)).catch((err) => console.log(err))
-        },
-        deleteAdmin(id){
-          console.log(id);
-            axios.delete(`http://localhost:3000/delete/${id}`).then((result) => {this.getAllAdmins(), console.log(result);}).catch((err) => console.log(err))
-       
-          }
-    }
-
-
-  
-
   methods: {
     getAllAdmins() {
       axios.get('http://localhost:3000/allAdmin').then((result) => { this.AllAdmins = result.data }, console.log(this.AllAdmins)).catch((err) => console.log(err))

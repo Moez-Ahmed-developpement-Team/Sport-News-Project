@@ -446,7 +446,7 @@ div.content {
 }
 
 @media (min-width: 768px) {
-  .btn1 {
+  .button-64 {
     font-size: 24px;
     min-width: 196px;
   }
