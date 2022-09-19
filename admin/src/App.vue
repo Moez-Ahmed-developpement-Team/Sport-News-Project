@@ -1,8 +1,9 @@
 <template>
   <section class="navigation">
+    <img class="brand" src="./assets/Logo1.png" />
     <div v-if="check" class="nav-container">
       <div>
-        <img class="brand" src="./assets/Logo1.png" />
+        
       </div>
       <nav>
         <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
@@ -20,9 +21,12 @@
           <li>
             <router-link to="AllAdmins">All Admins </router-link>
           </li>
+          <li>
+            <router-link to="AllAdmins">All Users </router-link>
+          </li>
 
           <li>
-            <a href="#!">Contact</a>
+            <a href="#!">Log Out</a>
           </li>
         </ul>
       </nav>
@@ -33,11 +37,11 @@
       <ul>
         <li class="active"><a href="#">Categories</a></li> 
         <br/>
-        <li><a href="#">Football</a></li>
+       <li> <router-link class="button-side" to="footballNews">Football</router-link></li>
         <br/>
-        <li><a href="#">BasketBall</a></li>
+        <li> <router-link class="button-side" to="basketballNews" >BasketBall</router-link></li>
         <br/>
-        <li><a href="#">Tennis</a></li>
+        <li> <router-link class="button-side" to="tennisNews" >Tennis</router-link></li>
       </ul>
     </nav>
   </aside>
@@ -47,13 +51,13 @@
 
 
 <script>
+  
 export default {
   data() {
     return {
-      check: true
+      check: true,
     }
-  },
-}
+  }}
 
 </script>
 
@@ -73,8 +77,9 @@ $link-hover-color: #74201d;
 
 // Logo and branding
 .brand {
-  position: absolute;
-  padding-left: 20px;
+ 
+  padding:0px 0;
+  
   float: left;
   line-height: $nav-height;
   text-transform: uppercase;
@@ -95,7 +100,7 @@ $link-hover-color: #74201d;
 
 // Navigation 
 .brand {
-  width: 100px;
+  width: 170px;
   height: 100px;
 }
 

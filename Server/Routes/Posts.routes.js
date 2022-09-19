@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router() ;
 
 // Require controller modules.
-const { getAllPosts, addPost, deletePost,updatePost,getOnePost } = require('../Controllers/Posts.controllers');
+const { getAllPosts, addPost, deletePost,updatePost,getPostsByCategories } = require('../Controllers/Posts.controllers');
 
 /// POSTS ROUTES ///
 
@@ -13,9 +13,9 @@ router.delete('/:id', deletePost);
 // POST request for creating a new post.
 router.post('/addPost', addPost);
 // UPDATE request for one post.
-router.put('/updatePost', updatePost);
+router.put('/updatePost/:id', updatePost);
 // get request for one post.
-router.get('/getOnePost/:id', getOnePost);
+router.get('/getOnePost/:id', getPostsByCategories);
 
 
 
