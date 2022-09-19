@@ -16,6 +16,10 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 //Add Routes to the middleware handling path, specifying the respective URL path
 app.use("/",adminRoutes) ;
 app.use("/user",usersRoutes) ;

@@ -32,8 +32,11 @@ export default {
     methods: {
         newadmin() {
             console.log(this.infos)
+
             axios.post('http://localhost:3000/addAdmin', this.infos).then((result)=> console.log(result)).catch((err)=> console.log(err))
+
         }
+
     }
 }
 </script>
