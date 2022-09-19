@@ -15,6 +15,7 @@
           </li>
           <li>
             <router-link to="AddAdmin">Add Admin </router-link>
+
           </li>
           <li>
             <router-link to="AllAdmins">All Admins </router-link>
