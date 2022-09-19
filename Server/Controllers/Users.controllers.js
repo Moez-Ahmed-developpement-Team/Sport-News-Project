@@ -1,7 +1,9 @@
 //Controller related to users ressource for login And signUp.
 const db = require("../Database/index");
-const {hashed} = require("../Token&Auth/Auth.js")
-const {NewToken}=require("../Token&Auth/Token.js")
+const { hashed } = require("../Token&Auth/Auth.js")
+const { NewToken } = require("../Token&Auth/Token.js")
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 //adding client 
 module.exports = {
@@ -15,7 +17,6 @@ module.exports = {
     try {
       console.log("req--->", NewUser)
       const userinfo = await db.User.create(NewUser);
-      res.cookie('token',NewToken(req.body))
       res.send(userinfo)
       console.log(userinfo)
     }
@@ -27,23 +28,28 @@ module.exports = {
   //verifying user identity
   userAuthentification: async (req, res) => {
     try {
+      const user = {
+        username: req.body.username,
+        password: req.body.password
+      }
       const userAuth = await db.User.findOne({
         where:
         {
-          password: hashed(req.body.password),
           username: req.body.username
         }
       }
       );
-      if (userAuth === null) {
-        res.send({ message: 'user Not found' });
-      } else {
-        res.cookie('token',NewToken(req.body))
-        res.send({ message: 'welcome Back' })
+      const Match = bcrypt.compareSync(user.password, userAuth.dataValues.password);
+      if (Match) {
+        const token = jwt.sign( userAuth.dataValues, 'secret');
+        res.cookie("auth", token);
+        res.send({ message: 'welcome Back'})
+      } else {   
+        res.send({ message: 'check the entries' });
       }
     }
-    catch {
-      res.send({ message: 'error' })
+    catch (err) {
+      res.status(401).send(err)
     }
   },
 };

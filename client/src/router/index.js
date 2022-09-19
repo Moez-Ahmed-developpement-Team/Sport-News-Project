@@ -4,7 +4,6 @@ import SignIn from '../components/SignIn.vue'
 
 import Viewer from '../views/Viewer.vue'
 import Allposts from '../components/All-posts.vue';
-import AddPost from '@/components/AddPost.vue'  
 const routes = [
   {
     path: '/',
@@ -26,14 +25,6 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: Allposts
-  },
-  {
-    path: '/AddPost',
-    name: 'AddPost',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: AddPost
   }
 
 ]

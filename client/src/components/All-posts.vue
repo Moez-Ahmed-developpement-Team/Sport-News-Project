@@ -4,11 +4,13 @@
 
     <div id="container-post"></div> 
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
-      <button @click.prevent = "getOne(post.id)">
-    <li>{{post.title}}</li>
+      <ul>
+        <li>{{post.title}}</li>
+        <br/>
+      </ul>
     <br/>
-    <img id="pictureofNews" v-bind:src="post.content"/>
-      </button>
+    <img id="pictureofNews" v-bind:src="post.image"/> 
+    
     </form>
   </div>
 </template>
@@ -26,7 +28,7 @@ export default {
   data() {
     return{
       Allposts:[],
-      id : ""
+      AllComments:[]
     }
  
   },
@@ -37,7 +39,7 @@ export default {
     },
     getOne(id) {
     axios.get(`http://localhost:3000/getOnePost/${id}`).then((result) => { this.Allposts=[result.data]; console.log(this.Allposts);}).catch((err) => console.log(err))
-  }
+  },
 }
 }
 </script>
@@ -45,8 +47,10 @@ export default {
 
 
 <style scoped lang="scss">
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
   #News{
     justify-items: center;
+    font-family: 'Orbitron', sans-serif;
   }
   #post{
     display: flex;
@@ -85,11 +89,19 @@ a {
 }
 
 #pictureofNews{
-  width: 500px;
+  width: 700px;
   height: 400px;
 }
 #container-post{
   display :flex;
 }
+.selectOne{
+  background: none;
+  border:none;
+}
+.AllNews{
+  background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/95097826056641.5634eedc62c87.png');
+}
+
 
 </style>
