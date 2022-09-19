@@ -1,6 +1,6 @@
 <template>
   <section class="navigation">
-    <div class="nav-container">
+    <div v-if="check" class="nav-container">
       <div>
         <img class="brand" src="./assets/Logo1.png" />
       </div>
@@ -33,9 +33,14 @@
 
 
 
-<script setup>
-// import AddPost from '@/components/AddPost.vue';
-
+<script>
+export default {
+  data() {
+    return {
+      check: true
+    }
+  },
+}
 
 </script>
 

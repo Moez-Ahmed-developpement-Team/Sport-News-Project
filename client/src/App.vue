@@ -2,7 +2,7 @@
   <section class="navigation">
     <div class="nav-container">
       <div>
-        <img class="brand" src="./assets/logo1.png" />
+        <img class="brand" src="./assets/" />
       </div>
       <nav>
         <ul>
