@@ -20,7 +20,7 @@ module.exports = {
   getPostsByCategories: async (req, res) => {
     try {
       const posts = await db.Post.findAll({
-        where:{theme : req.params.theme},
+        where:{theme : req.params.id},
         order: [["createdAt", "DESC"]],
       });
       res.status(200).json(posts);

@@ -20,9 +20,12 @@
           <li>
             <router-link to="AllAdmins">All Admins </router-link>
           </li>
+          <li>
+            <router-link to="AllAdmins">All Users </router-link>
+          </li>
 
           <li>
-            <a href="#!">Contact</a>
+            <a href="#!">Log Out</a>
           </li>
         </ul>
       </nav>
@@ -33,11 +36,11 @@
       <ul>
         <li class="active"><a href="#">Categories</a></li> 
         <br/>
-        <li><a href="#">Football</a></li>
+       <li> <router-link class="button-side" to="footballNews">Football</router-link></li>
         <br/>
-        <li><a href="#">BasketBall</a></li>
+        <li> <router-link class="button-side" to="basketballNews" >BasketBall</router-link></li>
         <br/>
-        <li><a href="#">Tennis</a></li>
+        <li> <router-link class="button-side" to="tennisNews" >Tennis</router-link></li>
       </ul>
     </nav>
   </aside>
@@ -47,13 +50,13 @@
 
 
 <script>
+  
 export default {
   data() {
     return {
-      check: true
+      check: true,
     }
-  },
-}
+  }}
 
 </script>
 

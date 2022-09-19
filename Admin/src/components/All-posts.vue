@@ -1,26 +1,25 @@
 <template>
 
-  <div id="News" class="AllNews">
-
-    <div id="container-post"></div> 
+  <label id="News" class="AllNews">
     <form id="post"  v-for=" (post,index)  in Allposts" :key="index" >
-      <button @click.prevent = "getOne(post.id)">
         <button @click="deletePost(post.id)">X</button>
     <li>{{post.title}}</li>
     <br/>
     <img id="pictureofNews" v-bind:src="post.image"/>
-    <button @click.prevent = "getComments(post.id)"> showComments</button>
+    <button @click.prevent = "getComments(post.id)"> showComments
     <form id="comment"  v-for=" (comment,index)  in AllComments" :key="index" >
-      <ul>
+      <ul v-if="comment.postId===post.id">
         <li>{{comment.text}}</li>
         <button @click="deleteComment(comment.id)">X</button>
+        <br/>
       </ul>
     </form>
     <input type="text"  v-model="data.text"/>
     <button @click.prevent = "addComment(post.id)">Comment</button>
   </button>
-  </form>
-  </div>
+</form>
+
+  </label>
 </template>
 
 
@@ -36,6 +35,7 @@ export default {
   data() {
     return{
       Allposts:[],
+      AllComments:[],
       data: {
         text:"",
         postId:""
@@ -48,11 +48,9 @@ export default {
     getAll() {
       axios.get('http://localhost:3000/getAll').then((result) => {this.Allposts=result.data}).catch((err) => console.log(err))
     },
-    getOne(id) {
-    axios.get(`http://localhost:3000/getOnePost/${id}`).then((result) => { this.Allposts=[result.data]; console.log(this.Allposts);}).catch((err) => console.log(err))
-  },
   getComments(id){
-    axios.get(`http://localhost:3000/comment/allComments/${id}`).then((result) => {this.AllComments=result.data}).catch((err) => console.log(err))
+    console.log(id);
+    axios.get(`http://localhost:3000/comment/allComments/${id}`).then((result) => {this.AllComments=result.data}, console.log(this.AllComments)).catch((err) => console.log(err))
   },
   addComment(id){
 this.data.postId = id
@@ -65,6 +63,7 @@ console.log("data==>",this.data);
   deletePost(id){
     axios.delete(`http://localhost:3000/${id}`).then((result) => { console.log(result)}).catch((err) => console.log(err))
   },
+  
 },
 }
 </script>
