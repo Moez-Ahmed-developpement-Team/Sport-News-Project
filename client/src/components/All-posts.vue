@@ -7,7 +7,7 @@
       <button @click.prevent = "getOne(post.id)">
     <li>{{post.title}}</li>
     <br/>
-    <img id="pictureofNews" v-bind:src="post.image"/>
+    <img id="pictureofNews" v-bind:src="post.content"/>
       </button>
     </form>
   </div>

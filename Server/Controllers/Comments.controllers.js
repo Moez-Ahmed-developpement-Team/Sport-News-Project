@@ -8,6 +8,7 @@ module.exports={
     getAllComment: async (req,res)=>{
        try {
         const comments = await db.Comment.findAll({
+            where: {postId : req.params.id},
             order: [["createdAt", "DESC"]],
         })
         res.status(222).json(comments) ;

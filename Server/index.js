@@ -10,6 +10,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 //Add Routes to the middleware handling path, specifying the respective URL path
 app.use("/",adminRoutes) ;
 app.use("/user",usersRoutes) ;
@@ -19,12 +25,6 @@ app.use("/",postsRoute) ;
 
 
 const PORT =  3000 ;
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
 
 
 
