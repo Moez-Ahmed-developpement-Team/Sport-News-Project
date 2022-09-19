@@ -5,24 +5,37 @@
     <div id="container-post"></div>
     <form id="post" v-for=" (admin,index)  in AllAdmins" :key="index">
       <li>{{admin.adminName}}</li>
-      <button @click.prevent="deleteAdmin(admin.id)"> Remove Admin</button>
-      <br />
-    </form>
-  </div>
-</template>
+      <button @click = "deleteAdmin(admin.id)"> Remove Admin</button>
+      <br/>
+      </form>
+    </div>
+  </template>
   
-<script>
-import axios from 'axios'
-
-export default {
-  mounted() {
-    this.getAllAdmins()
-  },
-  name: 'all-posts',
-  data() {
-    return {
-      AllAdmins: [],
-      id: ""
+  <script>
+    import axios from 'axios'
+    
+    export default {
+      mounted() {
+        this.getAllAdmins()
+      },
+      name:'all-posts',
+      data() {
+        return{
+          AllAdmins:[],
+          id : ""
+        }
+     
+      },
+    
+      methods: {
+        getAllAdmins() {
+          axios.get('http://localhost:3000/allAdmin').then((result) => {this.AllAdmins=result.data}, console.log(this.AllAdmins)).catch((err) => console.log(err))
+        },
+        deleteAdmin(id){
+          console.log(id);
+            axios.delete(`http://localhost:3000/delete/${id}`).then((result) => {this.getAllAdmins(), console.log(result);}).catch((err) => console.log(err))
+       
+          }
     }
 
 

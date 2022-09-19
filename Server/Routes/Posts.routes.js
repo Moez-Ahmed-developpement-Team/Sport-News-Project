@@ -13,7 +13,7 @@ router.delete('/:id', deletePost);
 // POST request for creating a new post.
 router.post('/addPost', addPost);
 // UPDATE request for one post.
-router.put('/updatePost', updatePost);
+router.put('/updatePost/:id', updatePost);
 // get request for one post.
 router.get('/getOnePost/:id', getPostsByCategories);
 
