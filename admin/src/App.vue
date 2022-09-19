@@ -1,8 +1,9 @@
 <template>
   <section class="navigation">
+    <img class="brand" src="./assets/Logo1.png" />
     <div v-if="check" class="nav-container">
       <div>
-        <img class="brand" src="./assets/Logo1.png" />
+        
       </div>
       <nav>
         <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
@@ -76,8 +77,9 @@ $link-hover-color: #74201d;
 
 // Logo and branding
 .brand {
-  position: absolute;
-  padding-left: 20px;
+ 
+  padding:0px 0;
+  
   float: left;
   line-height: $nav-height;
   text-transform: uppercase;
@@ -98,7 +100,7 @@ $link-hover-color: #74201d;
 
 // Navigation 
 .brand {
-  width: 100px;
+  width: 170px;
   height: 100px;
 }
 
