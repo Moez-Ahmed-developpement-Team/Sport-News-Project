@@ -106,6 +106,7 @@ cursor: pointer;
 }
 #post:hover{
   box-shadow: rgb(255, 255, 255);
+  box-sizing:content-box;
   border-style: solid;
 }
 
