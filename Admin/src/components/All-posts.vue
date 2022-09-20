@@ -8,13 +8,13 @@
       <li>{{post.title}}</li>
       <br />
       <img id="pictureofNews" v-bind:src="post.image" />
-      <button class="themodificationparts" @click.prevent="getComments(post.id)"> showComments
+      <button class="themodificationparts" @click.prevent="showComments(post.id)"> showComments
         <br/>
 
         <form id="comment" v-for=" (comment,index)  in AllComments" :key="index">
           <ul v-if="show && comment.postId===post.id">
-            <li>{{comment.text}}</li>
-            <button @click="deleteComment(comment.id)">X</button>
+            <li class="commentlist">{{comment.text}}</li>
+            <button  class="deletebutton2" @click="deleteComment(comment.id)">X</button>
             <br />
           </ul>
         </form>
@@ -27,7 +27,7 @@
       <input type="text"  v-model="data2.title" />
       <input type="text" v-model="data2.content" />
       <br/>
-      <button @click.prevent="updatePost(post.id),getall()">confirm</button>
+      <button class="addcommentbutton" @click.prevent="updatePost(post.id),getall()">confirm</button>
     </div>
     </form>
  
@@ -164,20 +164,25 @@ a {
   left:250px;
 
 }
+.deletebutton2{
+  color:white;
+  background-color:rgb(233, 144, 12);
+  border:none;
+  border-radius: 60%;
+}
+.commentlist{
+  width: 500px;
+}
 .themodificationparts{
   border: none;
   background: none;
   color: white;
   font-family: 'Orbitron', sans-serif;
-  input{
-    border-radius: 10%;
-    width:530px;
-  }
 }
 .addcommentbutton{
   align-items: center;
-  background-color: black;
-  border: 2px solid #06f;
+  background-color: rgb(233, 144, 12);
+  border: 2px solid whitesmoke;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -207,8 +212,8 @@ a {
 }
 
 .button-58:hover {
-  background-color: #3385ff;
-  border-color: #3385ff;
+  background-color: whitesmoke;
+  border-color: whitesmoke;
   fill: #06f;
 }
 
@@ -223,4 +228,8 @@ a {
     min-width: 170px;
   }
 }
+input{
+    border-radius: 20px;
+    width:530px;
+  }
 </style>
