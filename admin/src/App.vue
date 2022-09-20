@@ -62,6 +62,7 @@ export default {
 </script>
 
 <style lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap');
 $content-width: 1000px;
 $breakpoint: 799px;
 $nav-height: 70px;
@@ -73,13 +74,13 @@ $link-hover-color: #74201d;
 .navigation {
   height: $nav-height;
   background: $nav-background;
+  font-family: 'Quicksand', sans-serif;
 }
 
 // Logo and branding
 .brand {
- 
+  position:relative;
   padding:0px 0;
-  
   float: left;
   line-height: $nav-height;
   text-transform: uppercase;
@@ -100,7 +101,7 @@ $link-hover-color: #74201d;
 
 // Navigation 
 .brand {
-  width: 170px;
+  width: 100px;
   height: 100px;
 }
 
@@ -274,9 +275,9 @@ nav {
 $color: rgb(250, 250, 246);
 
 .sidebar {
-  position: fixed;
-  width: 25%;
-  height: 100vh;
+  position:absolute;
+  width: 20%;
+  height: 95%;
   background: #312450;
   font-size: 0.65em;
 }
@@ -288,6 +289,7 @@ $color: rgb(250, 250, 246);
   top: 50%;
   transform: translateY(-50%);
   font-weight: bold;
+
 }
 
 .nav ul {
