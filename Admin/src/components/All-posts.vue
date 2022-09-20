@@ -6,9 +6,9 @@
       <li>{{post.title}}</li>
       <br />
       <img id="pictureofNews" v-bind:src="post.image" />
-      <button @click.prevent="getComments(post.id)"> showComments
+      <button @click.prevent="showComments(post.id)"> showComments
         <form id="comment" v-for=" (comment,index)  in AllComments" :key="index">
-          <ul v-if="comment.postId===post.id">
+          <ul v-if="show && comment.postId===post.id">
             <li>{{comment.text}}</li>
             <button @click="deleteComment(comment.id)">X</button>
             <br />
@@ -46,6 +46,7 @@ export default {
     return {
       Allposts: [],
       AllComments: [],
+      show:false,
       updatepostcheck:false,
       data: {
         text: "",
@@ -90,6 +91,10 @@ updatePost(id){
   axios.put(`http://localhost:3000/updatePost/${id}`,this.data2).then((result) => { console.log(result) }).catch((err) => console.log(err))
     },
 
+    showComments(idComment){
+        this.show = !this.show
+        this.getComments(idComment)
+      }
   },
 }
 </script>

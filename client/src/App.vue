@@ -2,7 +2,7 @@
   <section class="navigation">
     <div class="nav-container">
       <div>
-        <img class="brand" src="./assets/Logo1.png" />
+        <img class="brand" src="./assets/logo1.png" />
       </div>
       <nav>
         <ul>
@@ -17,7 +17,8 @@
             </form>
           </li>
           <li>
-            <a href="#!">Contact</a>
+            <router-link to="Singin"> <a href="#!">Sign Up</a></router-link>
+            
           </li>
         </ul>
       </nav>
