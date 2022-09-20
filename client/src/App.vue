@@ -59,7 +59,7 @@ export default {
       alert(this.message)
     },
     checking() {
-      this.check = false;
+      this.check = !this.check;
     }
   }
 }

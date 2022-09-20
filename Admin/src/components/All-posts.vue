@@ -2,7 +2,7 @@
 
   <label id="News" class="AllNews">
     <form id="post" v-for=" (post,index)  in Allposts" :key="index">
-      <!-- <button @click="deletePost(post.id)">X</button> -->
+      <button @click="deletePost(post.id)">X</button>
       <li>{{post.title}}</li>
       <br />
       <img id="pictureofNews" v-bind:src="post.image" />
@@ -16,13 +16,16 @@
         </form>
         <input type="text" v-model="data.text" />
         <button @click.prevent="addComment(post.id)">AddComment</button>
-        <button @click.prevent="addComment(post.id)">updateComment</button>
       </button>
-      <button @click.prevent>update</button>
+      <button @click.prevent="update()">updatePost</button>
+      <div  v-if="updatepostcheck" >
+
       <input type="text" v-model="data2.title" />
       <input type="text" v-model="data2.content" />
       <input type="text"  v-model="data2.theme" />
-      <button @click.prevent="updatePost(post.id)">confirm</button>
+      <br/>
+      <button @click.prevent="updatePost(post.id),getall()">confirm</button>
+    </div>
     </form>
  
 
@@ -43,12 +46,13 @@ export default {
     return {
       Allposts: [],
       AllComments: [],
+      updatepostcheck:false,
       data: {
         text: "",
         postId: ""
       },
       data2: {
-        title: "aaaaa",
+        title: "",
         content: "",
         theme: ""
       }
@@ -62,18 +66,25 @@ export default {
     },
     getComments(id) {
       console.log(id);
-      axios.get(`http://localhost:3000/comment/allComments/${id}`).then((result) => { this.AllComments = result.data }, console.log(this.AllComments)).catch((err) => console.log(err))
+      axios.get(`http://localhost:3000/comment/allComments/${id}`).then((result) => 
+      { this.AllComments = result.data }, console.log(this.AllComments)).catch((err) => 
+      console.log(err))
     },
     addComment(id) {
       this.data.postId = id
       console.log("data==>", this.data);
-      axios.post(`http://localhost:3000/comment/add`, this.data).then((result) => { this.AllComments = result.data }).catch((err) => console.log(err))
+      axios.post(`http://localhost:3000/comment/add`, this.data).then((result) =>
+       { this.AllComments = result.data }).catch((err) =>
+        console.log(err))
     },
     deleteComment(id) {
       axios.delete(`http://localhost:3000/comment/delete/${id}`).then((result) => { console.log(result) }).catch((err) => console.log(err))
     },
     deletePost(id) {
       axios.delete(`http://localhost:3000/${id}`).then((result) => { console.log(result) }).catch((err) => console.log(err))
+    },
+    update(){
+ this.updatepostcheck=!this.updatepostcheck
     },
 updatePost(id){
   axios.put(`http://localhost:3000/updatePost/${id}`,this.data2).then((result) => { console.log(result) }).catch((err) => console.log(err))
