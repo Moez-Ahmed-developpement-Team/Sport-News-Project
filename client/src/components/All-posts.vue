@@ -12,12 +12,12 @@
     <img id="pictureofNews" v-bind:src="post.image"/>
     <button class='btn1' @click.prevent = "getComments(post.id)"> showComments</button>
     <form id="comment"  v-for=" (comment,index)  in AllComments" :key="index" >
-      <ul>
-        <li>{{comment.text}}</li>
+      <ul v-if="comment.postId===post.id">
+        <li >{{comment.text}}</li>
         <button class='btn1' @click="deleteComment(comment.id)">X</button>
       </ul>
     </form>
-    <!-- <input type="text"  v-model="data.text"/> -->
+    <input type="text"  v-model="data.text"/>
     <button class='btn1' @click.prevent = "addComment(post.id)">Comment</button>
     
     </form>
@@ -37,9 +37,12 @@ export default {
   data() {
     return{
       Allposts:[],
-      AllComments:[]
+      AllComments:[],
+      data: {
+          text: "",
+          postId: ""
+        }
     }
- 
   },
 
   methods: {
@@ -50,6 +53,7 @@ export default {
     axios.get(`http://localhost:3000/getOnePost/${id}`).then((result) => { this.Allposts=[result.data]; console.log(this.Allposts);}).catch((err) => console.log(err))
   },
   getComments(id){
+    console.log(id);
     axios.get(`http://localhost:3000/comment/allComments/${id}`).then((result) => {this.AllComments=result.data}).catch((err) => console.log(err))
   },
   addComment(id){
