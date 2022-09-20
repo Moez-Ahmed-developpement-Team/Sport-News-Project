@@ -17,7 +17,8 @@
             </form>
           </li>
           <li>
-            <a href="#!">Contact</a>
+            <router-link to="Singin"> <a href="#!">Sign Up</a></router-link>
+            
           </li>
         </ul>
       </nav>
