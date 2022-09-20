@@ -3,16 +3,16 @@
         <form v-on:submit.prevent="upload">
           <div >
             <label class="title">Title</label>
-              <input type="text" class ="form-title" >
+              <input type="text" class ="form-title" v-model="post.title" >
             <br>
-            <label class="title">Content</label>
+            <label class="content">Content</label>
             <textarea class="form-group"
-            @input="event => text = event.target.value">
+            v-model="post.content">
             </textarea>
           </div>
           <div >
           <label class="title">Theme</label> <br>
-          <select class="form-select" type="select">
+          <select class="form-select" type="select" v-model="post.theme">
             <option>Football</option>
             <option>Basketball</option>
             <option>Tennis</option>
@@ -45,7 +45,13 @@
           progress: 0,
           showProgress: false,
           fileContents: null,
-          formData:null
+          formData:null,
+          post:{
+            title:"",
+            content:"",
+            image:"",
+            theme:""
+          }
         };
       },
       methods: {
@@ -62,6 +68,12 @@
     this.formData.append("file", this.fileContents);
   },
   upload: function() {
+    let newPost = {
+        title: this.post.title,
+        content: this.post.content,
+        img: "",
+        theme: this.post.theme,
+      }
     console.log("upload", this.file.name);
     let reader = new FileReader();
     reader.addEventListener(
@@ -77,8 +89,8 @@
         };
         axios(requestObj)
           .then(response => {
-            let results = response.data;
-            console.log(results);
+            newPost.image = response.data.secure_url
+            axios.post('http://localhost:3000/addPost', newPost)
           })
           .catch(error => {
            console.log(error);

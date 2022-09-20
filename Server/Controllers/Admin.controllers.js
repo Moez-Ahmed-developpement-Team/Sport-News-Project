@@ -11,8 +11,8 @@ module.exports={
             const admins =await db.Admin.findAll({
                 order: [["createdAt", "DESC"]],
             });
-            res.status(200).json(admins)
-        }catch (error){console.log (error)}res.status(502).send('you have error')
+            res.status(200).json(admins);return;
+        }catch (error){console.log (error)}res.status(502).send('you have error');return;
     },
    //method to add a post to the database via the respective model function.
     addAdmin:async(req,res)=>{
@@ -21,28 +21,19 @@ module.exports={
            email: req.body.email,
            password: req.body.password,
         }
+        console.log(newAdmin);
         try {
             const admin =await db.Admin.create(newAdmin);
-            res.status(203).send(admin) ;
-        }catch (error){console.log (error)}res.status(555).send('you have error')
+            res.status(203).send(admin) ;return;
+        }catch (error){console.log (error)}res.status(555).send('you have error');return;
     },
      //method to get one admin by picture's link.
     deleteAdmin:async(req,res)=>{
-        let id =req.params.id 
+        let id =req.params.idDeleted
+        console.log(id);
         try {
             const adminDeleted=await db.Admin.destroy({where :{id :id}})
-            res.status(207).json(adminDeleted) ;
-        }catch (error){console.log(error)}res.status(564).send('you have error')
+            res.status(207).json(adminDeleted) ;return;
+        }catch (error){console.log(error)}res.status(564).send('you have error');return;
     },
-    updateAdmin:async(req,res)=>{
-    let id =req.params.id ;
-    let update =req.body ;
-    try {
-    const adminUpdate=await db.Admin.update(update,{weher:{id:id}})
-    res.status(201).json(adminUpdate) ;
-    }catch (error){console.log(error)}res.status(532).send('you have error ')
-    },
-
-
-
 }

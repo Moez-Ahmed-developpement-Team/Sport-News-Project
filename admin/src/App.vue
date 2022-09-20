@@ -1,50 +1,68 @@
-<template> 
-<section class="navigation">
-  <div class="nav-container">
-    <div >
-      <img class="brand" src="./assets/Logo1.png" />
-    </div>
-    <nav>
-      <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-      <ul>
-      <li>
-        <router-link  to="allPosts">Home </router-link>
-        </li>
-      <li>
-        <router-link to="AddPost">Add Post </router-link>
-        </li>
-      <li>
-        <router-link to="AddAdmin">Add Admin </router-link>
-        </li>
-      <li>
-        <router-link to="AllAdmins">Admins </router-link>
-        </li>
-      <li>
-        <router-link  to="logOut">Log Out </router-link>
-        </li>
+<template>
+  <section class="navigation">
+    <img class="brand" src="./assets/Logo1.png" />
+    <div v-if="check" class="nav-container">
+      <div>
+        
+      </div>
+      <nav>
+        <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+        <ul>
+          <li>
+            <router-link to="allPosts">Home </router-link>
+          </li>
+          <li>
+            <router-link to="AddPost">Add Post </router-link>
+          </li>
+          <li>
+            <router-link to="AddAdmin">Add Admin </router-link>
 
-        <li>
-          <a href="#!">Contact</a>
-        </li>
+          </li>
+          <li>
+            <router-link to="AllAdmins">All Admins </router-link>
+          </li>
+          <li>
+            <router-link to="AllAdmins">All Users </router-link>
+          </li>
+
+          <li>
+            <a href="#!">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+  <aside class="sidebar">
+    <nav class="nav">
+      <ul>
+        <li class="active"><a href="#">Categories</a></li> 
+        <br/>
+       <li> <router-link class="button-side" to="footballNews">Football</router-link></li>
+        <br/>
+        <li> <router-link class="button-side" to="basketballNews" >BasketBall</router-link></li>
+        <br/>
+        <li> <router-link class="button-side" to="tennisNews" >Tennis</router-link></li>
       </ul>
     </nav>
-  </div>
-</section>
-<div class="sidebar">
-  <img class="side-nav-Pic" src="./assets/fifa-world-cup-2022-poster-template-design-a01aa1db754051369a125491efd0edf7_screen.jpg">
-</div>
+  </aside>
   <router-view />
 </template>
 
 
 
-<script setup>
-
+<script>
+  
+export default {
+  data() {
+    return {
+      check: true,
+    }
+  }}
 
 </script>
 
 <style lang="scss">
-  $content-width: 1000px;
+$content-width: 1000px;
 $breakpoint: 799px;
 $nav-height: 70px;
 $nav-background: #262626;
@@ -59,12 +77,14 @@ $link-hover-color: #74201d;
 
 // Logo and branding
 .brand {
-  position: absolute;
-  padding-left: 20px;
+ 
+  padding:0px 0;
+  
   float: left;
   line-height: $nav-height;
   text-transform: uppercase;
   font-size: 1.4em;
+
   a,
   a:visited {
     color: $nav-font-color;
@@ -79,19 +99,23 @@ $link-hover-color: #74201d;
 }
 
 // Navigation 
-.brand{
-  width: 100px;
+.brand {
+  width: 170px;
   height: 100px;
 }
+
 nav {
   float: right;
+
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
+
     li {
       float: left;
       position: relative;
+
       a,
       a:visited {
         display: block;
@@ -100,17 +124,22 @@ nav {
         background: $nav-background;
         color: $nav-font-color;
         text-decoration: none;
+
         &:hover {
           background: $link-hover-color;
           color: $nav-font-color;
         }
+
         &:not(:only-child):after {
           padding-left: 4px;
           content: ' ▾';
         }
-      } // Dropdown list
+      }
+
+      // Dropdown list
       ul li {
         min-width: 190px;
+
         a {
           padding: 15px;
           line-height: 20px;
@@ -140,43 +169,54 @@ nav {
   height: $nav-height;
   width: $nav-height;
 }
+
 @media only screen and (max-width: 798px) {
+
   // Hamburger nav visible on mobile only
   .nav-mobile {
     display: block;
   }
+
   nav {
-   width: 100%;
+    width: 100%;
     padding: $nav-height 0 15px;
+
     ul {
       display: none;
+
       li {
         float: none;
+
         a {
           padding: 15px;
           line-height: 20px;
         }
+
         ul li a {
           padding-left: 30px;
         }
       }
     }
   }
+
   .nav-dropdown {
     position: static;
   }
 }
+
 @media screen and (min-width: $breakpoint) {
   .nav-list {
     display: block !important;
   }
 }
+
 #nav-toggle {
   position: absolute;
   left: 18px;
   top: 22px;
   cursor: pointer;
   padding: 10px 35px 16px 0px;
+
   span,
   span:before,
   span:after {
@@ -190,101 +230,106 @@ nav {
     content: '';
     transition: all 300ms ease-in-out;
   }
+
   span:before {
     top: -10px;
   }
+
   span:after {
     bottom: -10px;
   }
+
   &.active span {
     background-color: transparent;
+
     &:before,
     &:after {
       top: 0;
     }
+
     &:before {
       transform: rotate(45deg);
     }
+
     &:after {
       transform: rotate(-45deg);
     }
   }
 }
 
-  .all-posts{
-    
-    margin-right: 20px;
-    text-decoration: none;
-  }
- 
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    
-  }
-  $color: rgb(250, 250, 246);
-  .side-nav-Pic{
-    width: 200px;
-    height: 600px;
-    margin-top: 20px;
-    
-  }
+.all-posts {
 
-  .brand{
-    display: flex;
-    height: 130px;
-    width:250px;
- 
-    
-    margin-left: -300px;
-  }
-  .sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+
+}
+
+$color: rgb(250, 250, 246);
+
+.sidebar {
   position: fixed;
-  height: 100%;
-  overflow: auto;
-  margin-right: -83%;
+  width: 25%;
+  height: 100vh;
+  background: #312450;
+  font-size: 0.65em;
 }
 
-.sidebar img {
-  width: 200px;
-    height: 700px;
-    margin-top: 20px;
-}
- 
-.sidebar img.active {
-}
-
-.sidebar img:hover:not(.active) {
-  background-color: #555;
-  color: white;
+.nav {
+  position: relative;
+  margin: 0 15%;
+  text-align: right;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
 }
 
-div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
-}
-
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
+.nav ul {
+  list-style: none;
+  
+  li {
     position: relative;
+    margin: 3.2em 0;
+    
+    a {
+      line-height: 5em;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.4em;
+      color: rgba(#FFF, 0.35);
+      display: block;
+      transition: all ease-out 300ms;
+    }
+    
+    &.active a {
+      color: white;
+    }
+    
+    &:not(.active)::after {
+      opacity: 0.2;
+    }
+    
+    &:not(.active):hover a {
+      color: rgba(#FFF, 0.75);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 0.2em;
+      background: black;
+      left: 0;
+      bottom: 0;
+      background-image: linear-gradient(to right, #5e42a6, #b74e91)
+    }
   }
-  .sidebar img {float: left;}
-  div.content {margin-left: 0;}
 }
 
-@media screen and (max-width: 400px) {
-  .sidebar img {
-    text-align: center;
-    float: none;
-  }
-
-}
 </style>
