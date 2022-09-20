@@ -10,16 +10,20 @@
       </ul>
     <br/>
     <img id="pictureofNews" v-bind:src="post.image"/>
-    <button class='btn1' @click.prevent = "getComments(post.id)"> showComments</button>
+    <button class='btn1' @click.prevent = "showComments(post.id)"> showComments</button>
     <form id="comment"  v-for=" (comment,index)  in AllComments" :key="index" >
-      <ul>
-        <li>{{comment.text}}</li>
-        <button class='btn1' @click="deleteComment(comment.id)">X</button>
+      <ul v-if="show && comment.postId===post.id">
+        <li >{{comment.text}}</li>
       </ul>
     </form>
-    <!-- <input type="text"  v-model="data.text"/> -->
+    <input type="text"  v-model="data.text"/>
     <button class='btn1' @click.prevent = "addComment(post.id)">Comment</button>
-    
+    <div  v-if="updateCommentcheck" >
+
+<input type="text" v-model="data.text"/>
+<br/>
+<button @click.prevent="updatePost(post.id),getall()">confirm</button>
+</div>
     </form>
   </div>
 </template>
@@ -37,9 +41,13 @@ export default {
   data() {
     return{
       Allposts:[],
-      AllComments:[]
+      AllComments:[],
+      show:false,
+      data: {
+          text: "",
+          postId: ""
+        }
     }
- 
   },
 
   methods: {
@@ -50,6 +58,7 @@ export default {
     axios.get(`http://localhost:3000/getOnePost/${id}`).then((result) => { this.Allposts=[result.data]; console.log(this.Allposts);}).catch((err) => console.log(err))
   },
   getComments(id){
+    console.log(id);
     axios.get(`http://localhost:3000/comment/allComments/${id}`).then((result) => {this.AllComments=result.data}).catch((err) => console.log(err))
   },
   addComment(id){
@@ -57,6 +66,10 @@ this.data.postId = id
 console.log("data==>",this.data);
     axios.post(`http://localhost:3000/comment/add`,this.data).then((result) => {this.AllComments=result.data}).catch((err) => console.log(err))
   },
+    showComments(idComment){
+      this.show = !this.show
+      this.getComments(idComment)
+    }
 }
 }
 </script>
