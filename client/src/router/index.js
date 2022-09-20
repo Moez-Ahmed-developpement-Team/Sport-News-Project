@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import SignIn from '../components/SignIn.vue'
+import signIn from '../components/SignIn.vue'
 
 import Viewer from '../views/Viewer.vue'
 import Allposts from '../components/All-posts.vue';
@@ -12,9 +12,9 @@ const routes = [
   },
   {
 
-    path: '/Signin',
-    name: 'Singin',
-    component: SignIn
+    path: '/signIn',
+    name: '/signIn',
+    component: signIn
   },
   {
 

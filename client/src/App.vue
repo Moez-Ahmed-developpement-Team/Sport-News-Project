@@ -17,7 +17,7 @@
             </form>
           </li>
           <li>
-            <router-link to="Singin"> <a href="#!">Sign Up</a></router-link>
+            <router-link to="signIn"> <a href="#!">Sign Up</a></router-link>
             
           </li>
         </ul>
@@ -290,12 +290,12 @@ $color: rgb(250, 250, 246);
 }
 
 .brand {
-  display: flex;
-  height: 130px;
-  width: 250px;
+  display: relative;
+  height: 160px;
+  width: 300px;
 
 
-  margin-left: -300px;
+  margin-left: -600px;
 }
 
 .sidebar {
@@ -405,6 +405,7 @@ div.content {
   }
 }
 .btn1{
+  margin: 5% 5% 5% 5%;
   align-items: center;
   background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
   border: 0;
